@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.scss"],"names":[],"mappings":"AAAA,aACE,WAAW,CADb,mBAGI,UAAU,CACV,aAAa","file":"11.2360a7a9.chunk.css","sourcesContent":[".message-box{\r\n  width:800px;\r\n  .item{\r\n    width:100%;\r\n    margin:20px 0;\r\n  }\r\n}"]}

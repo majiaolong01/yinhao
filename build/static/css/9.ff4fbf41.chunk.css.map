@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.scss"],"names":[],"mappings":"AAAA,WACE,WAAW,CADb,iBAGI,UAAU,CACV,aAAa","file":"9.ff4fbf41.chunk.css","sourcesContent":[".login-box{\r\n  width:200px;\r\n  .item{\r\n    width:100%;\r\n    margin:10px 0;\r\n  }\r\n}"]}
