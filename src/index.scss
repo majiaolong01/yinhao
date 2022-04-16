@@ -21,6 +21,13 @@ html,body {
       justify-items: center;
     }
   }
+  #loading{
+    // width:10px;
+    // height:10px;
+    position: absolute;
+    right: 48%;
+    top: 48%;
+  }
 }
 
 code {

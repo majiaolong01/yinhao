@@ -5,5 +5,28 @@
   .item{
     width:100%;
     margin:10px 0;
+    input{
+      border-width:0 0 1px 0;
+    }
   }
+  .card{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid #333;
+    border-radius: 10px;
+    img{
+      margin:5px;
+      width:50px;
+      height:50px;
+      border-radius: 25px;
+    }
+    .detail{
+      span{
+        display: block;
+        text-align: left;
+      }
+    }
+  }
+  
 }

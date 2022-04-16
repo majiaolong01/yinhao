@@ -8,70 +8,53 @@ import withRouter from '../../util/WithRouter';
 class Login extends Component {
     constructor(props) {
         super(props);
+        this.defaultImg= require('../../asset/image/qq.jpg');
         this.state = {
-            username:'',
-            password:'',
-            publicKey:''
+            qq:'',
+            qlogo:this.defaultImg,
+            name:'',
+            show:false
         }
 
     }
     componentDidMount() {
-        this.getPublicKey();
+    //     const {qq}= this.state;
+    //    this.getQQInfo({qq});
     }
-
+    getQQInfo(param){
+        $http.getQQCode(param).then(res=>{
+           if(res.code == 1){
+               const {qq,name,qlogo} = res;
+               this.setState({
+                 qq,name,qlogo,show:true
+               })
+           }
+        })
+    }
     handleChange=e=>{
         this.setState({
             [e.target.name]:e.target.value
         })
     }
-
-    login=()=>{
-        const {username,password}=this.state;
-        const encrypt = new JSEncrypt();
-        encrypt.setPublicKey(this.state.publicKey);
-        const param={
-            username,
-            password:encrypt.encrypt(password)
-        }
-        $http.login(param).then(res=>{
-            if(res.code===200){
-                message.success(res.message);
-                window.sessionStorage.setItem("accessToken",res.accessToken);
-               
-               // const {navigate} = Navigate()
-                this.props.rememberUser({...res.data,accessToken:res.accessToken});
-                this.props.navigate('/product')
-            }else{
-                message.error(res.message)
-            }
-        })
+    handleBlur=e=>{
+        this.getQQInfo({qq:e.target.value})
     }
-
-    getPublicKey=()=>{
-        $http.getPublicKey().then(res=>{
-            //console.log(res.data);
-             if(res.code===200){
-                  this.setState({
-                      publicKey:res.data.publicKeyStr
-                  })
-             }
-        })
-    }
-
     render() {
-        const {username,password}=this.state;
+        const {qq,name,qlogo,show}=this.state;
         return <div className="container">
                       <div className="login-box">
+                          <h1>QQ号查询</h1>
                           <div className="item">
-                              <Input size="large" value={username} name="username" onChange={e=>this.handleChange(e)} placeholder="请输入用户名" /><br />
-
+                             QQ  <input type="text" value={qq} name="qq" onFocus={e=>this.setState({show:false})} onChange={e=>this.handleChange(e)} onBlur={e=>this.handleBlur(e)} placeholder="请输入qq号" />
                           </div>
-                          <div className="item">
-                              <Input size="large" value={password} name="password" type="password" onChange={e=>this.handleChange(e)} placeholder="请输入密码" />
-                          </div>
-                          <Button type="primary" size="large" block onClick={()=>this.login()} >
-                             提交
-                          </Button>
+                          {show?<div className="card">
+                              <img src={qlogo} alt="" />
+                              <div className="detail">
+                                    <span>{name}</span>
+                                    <span>{qq}</span>
+                              </div>
+                          </div>:null}
+                          {show?<a >下一题</a>:null}
                       </div>
                </div>
     }

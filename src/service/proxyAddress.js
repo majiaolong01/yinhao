@@ -1,8 +1,8 @@
 
 const proxyAddress=[
     {
-        context:'/api/',
-        target:'http://127.0.0.1:8080/',
+        context:'/api/uomg/',
+        target:'https://api.uomg.com/',
     }
     ]
 module.exports= proxyAddress
