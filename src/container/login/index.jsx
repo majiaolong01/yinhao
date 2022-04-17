@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {JSEncrypt} from 'jsencrypt'
+// import {JSEncrypt} from 'jsencrypt'
 import {connect} from 'react-redux'
 import $http from "../../service/config";
 import './index.scss'
@@ -54,7 +54,6 @@ class Login extends Component {
                                     <span>{qq}</span>
                               </div>
                           </div>:null}
-                          {show?<a >下一题</a>:null}
                       </div>
                </div>
     }
